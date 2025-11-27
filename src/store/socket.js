@@ -6,7 +6,7 @@ let socket = null
 export function connectSocket(){
   if (socket) return socket
   const token = getToken()
-  socket = io('http://localhost:3000', { auth: { token } })
+  socket = io('https://web-tracking-backend.onrender.com', { auth: { token } })
   socket.on('connect', () => {
     console.log('socket connected', socket.id)
   })

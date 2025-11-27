@@ -3,7 +3,7 @@ import { getToken, logout } from '../store/authHelpers'
 import { toast } from 'react-hot-toast'
 
 const API = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://web-tracking-backend.onrender.com/api',
   timeout: 10000,
 })
 
