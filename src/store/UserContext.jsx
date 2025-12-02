@@ -8,7 +8,7 @@ const UserContextProvider = ({ children }) => {
   useEffect(() => {
     getUserData();
     console.log(UserData);
-  }, []);
+  }, [window.location.pathname]);
   const getUserData = async () => {
     var res = await fetch(`${BackEndURI}/api/user`, {
       method: "POST",
@@ -16,8 +16,11 @@ const UserContextProvider = ({ children }) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({ wt_token: localStorage.getItem("wt_token") }),
+    }).catch((err) => {
+      console.log(err);
+      return setUserData(null);
     });
-    const data = await res.json();
+    const data = await res?.json();
     if(!data){
       setUserData({})
     }else{
